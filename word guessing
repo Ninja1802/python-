@@ -1,0 +1,49 @@
+import random
+
+def play_word_guessing_game():
+
+    words = ["apple", "banana", "cherry", "orange", "grape", "mango", "pineapple"]
+
+    selected_word = random.choice(words)
+
+    guesses = []
+
+    attempts = 6
+
+    while attempts > 0:
+
+        print("\nAttempts left:", attempts)
+
+        hint = "Hint: The word starts with the letter '{}'. It has {} letters.".format(selected_word[0], len(selected_word))
+
+        print(hint)
+
+        guess = input("Enter your guess: ").lower()
+
+        if guess in guesses:
+
+            print("You already guessed that letter. Try again!")
+
+            continue
+
+        guesses.append(guess)
+
+        if guess == selected_word:
+
+            print("Congratulations! You guessed the word correctly!")
+
+            return
+
+        if guess in selected_word:
+
+            print("Correct guess!")
+
+        else:
+
+            print("Incorrect guess!")
+
+        attempts -= 1
+
+    print("You ran out of attempts. The word was", selected_word)
+
+play_word_guessing_game()
